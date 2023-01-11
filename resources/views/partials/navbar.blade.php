@@ -1,27 +1,38 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-  <div class="container">
-      <a class="navbar-brand" href="/">WPU Blog</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-              <li class="nav-item">
-                  <a class="nav-link {{ ($active === "home") ? 'active' : '' }}" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link {{ ($active === "about") ? 'active' : '' }}" href="/about">About</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link {{ ($active === "posts") ? 'active' : '' }}" href="/posts">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {{ ($active === "categories") ? 'active' : '' }}" href="/categories">Categories</a>
-            </li>
-          </ul>
+<nav>
 
-          <ul class="navbar-nav ms-auto">
+        <div class="logo">
+            <img src="/img/logoup1.png" alt="">
+            <img src="/img/logohmik.png" alt="">
+
+        </div>
+        
+        <div class="menu">
+            <ul>
+            <li>
+                <a class="beranda {{ ($active === "home") ? 'active' : '' }}"" href="/">Beranda</a>
+            </li>
+            <li>
+              @if (isset($_GET['category']))
+                <a class="{{ ($_GET['category'] === "competition") ? 'active' : '' }}"" href="/posts?category=competition">Lomba</a>
+              @else
+                <a class="" href="/posts?category=competition">Lomba</a>
+              @endif
+            </li>
+            <li>
+            @if (isset($_GET['category']))
+                <a class="{{ ($_GET['category'] === "knowledge") ? 'active' : '' }}"" href="/posts?category=knowledge">Seminar</a>
+              @else
+                <a class="" href="/posts?category=knowledge">Seminar</a>
+              @endif
+            </li>
+            <li>
+            @if (isset($_GET['category']))
+                <a class="{{ ($_GET['category'] === "event") ? 'active' : '' }}"" href="/posts?category=event">Acara</a>
+              @else
+                <a class="" href="/posts?category=event">Acara</a>
+              @endif
+            </li>
+            <li>
                 @auth
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,8 +54,10 @@
                     <a href="/login" class="nav-link {{ ($active === "login") ? 'active' : '' }}"><i class="bi bi-box-arrow-in-right"></i> Login</a>
                 </li>
                 @endauth
-            </ul>
-          
-      </div>
-  </div>
-</nav>
+
+            </li>
+        </ul>
+    </div>
+        
+
+    </nav>
